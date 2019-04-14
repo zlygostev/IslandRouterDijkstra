@@ -12,13 +12,14 @@
 namespace visualizer 
 {
 
-// Can show map with route to pic.bmp file
+/// Rander map with route to a BMP file (pic.bmp)
 struct MapsViewer 
 {
 	MapsViewer(MapsModel& model): model(model)
 	{
 	}
 
+	/// Rander map with route to a BMP file (pic.bmp)
 	void showRoute(const PathTimes& path, const std::list<PointT>& basePoints)
 	{
 		auto forecastTime = path.getForecastTime();
@@ -31,13 +32,16 @@ struct MapsViewer
 			of,
 			model.elevation().rawData(),
 			model.getSizeX(),
-			model.getSizeX(),
-			[&](int x, int y, uint8_t elevation) {
+			model.getSizeY(),
+			[&](int x, int y, uint8_t elevation) 
+			{
 				// Marks interesting positions on the map
 				if (donut(x, y, basePoints))
 				{
 					return static_cast<uint8_t>(visualizer::IPV_PATH);
 				}
+
+				//Show Path dots
 				PointT point(x, y);
 				uint8_t pathType = static_cast<uint8_t>(visualizer::IPV_ELEVATION_BEGIN);
 				if (extactPathColor(path, model.overrides(), point, pathType))
@@ -84,6 +88,8 @@ private:
 		int r2 = dx * dx + dy * dy;
 		return r2 >= 150 && r2 <= 400;
 	}
+
+
 	static bool extactPathSurroundings(const PathTimes& path, const MapExplorer& map, const PointT& point, TimeT& tm)
 	{
 		int pathType = visualizer::IPV_ELEVATION_BEGIN;

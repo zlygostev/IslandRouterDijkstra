@@ -5,7 +5,7 @@
 //#include <unordered_map>
 #include <map>
 
-//Keep route with times
+/// Keep route with times
 struct PathTimes
 {
 	/// Returns false if no item found. If found returns true and time for get in this point from previous 

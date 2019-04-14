@@ -26,7 +26,7 @@ protected:
 	const size_t m_sizeY;
 };
 
-// It's a wrapper with additional checks and functionality over a input NodesT map data
+/// It's a wrapper with additional checks and functionality over a input NodesT map data
 struct MapExplorer: public BaseMap
 {
 	MapExplorer(const NodesT&& points, size_t sizeX, size_t sizeY) : 

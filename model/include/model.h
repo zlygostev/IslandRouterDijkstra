@@ -21,6 +21,7 @@ static const char* PATH_SEP = "/";
 /*!
 This class implements logic of extract maps from source files and bring access data.
 
+//It's an implementation of map data  extraction from map. It could alternative sources in future
 */
 struct MapsModel
 {

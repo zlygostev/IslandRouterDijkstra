@@ -10,8 +10,8 @@ bool EvaluationStategy::isDrivable(const PointT& node) const
 
 	auto flags = m_overrides.get(node);
 	bool isNotDrivable = (m_overrides.get(node) & (OF_WATER_BASIN | OF_RIVER_MARSH));
-	//There is no information in the rules that zero evaluation of lend is forbidden to drive there. 
-	//There is separated flags for this case in m_overrides for this information.
+	// There is no information in the rules that zero evaluation of lend is forbidden to drive there. 
+	// There is separated flags for this case in m_overrides for this information.
 	// But check if elevation is 0 and ground is marked as drivable - set it as indrivable to reduce risks of route
 	if (!isNotDrivable && m_elevation.get(node) <= 0)
 	{
@@ -22,7 +22,7 @@ bool EvaluationStategy::isDrivable(const PointT& node) const
 
 TimeT EvaluationStategy::getTimeToNeighbour(const PointT& from, const PointT& to) const
 {
-	//check if destination node is reachable
+	// check if destination node is reachable
 	if (!isDrivable(to))
 	{
 		return unreachable();
@@ -31,8 +31,8 @@ TimeT EvaluationStategy::getTimeToNeighbour(const PointT& from, const PointT& to
 	const double distance = getNeighboursDistance(from, to);
 	const int16_t deltaH = m_elevation.get(to) - m_elevation.get(from);
 	auto key = std::make_pair(deltaH, distance);
-	//it could be optimized by use of unordered_map. But we also need to add some hash function.
-	static std::map<std::pair<int16_t, double>, TimeT> timesCache; //thread unsafe trick
+	// it could be optimized by use of unordered_map. But we also need to add some hash function.
+	static std::map<std::pair<int16_t, double>, TimeT> timesCache; // thread unsafe trick
 	auto it = timesCache.find(key);
 	if (it != timesCache.end())
 	{
@@ -108,7 +108,7 @@ double EvaluationStategy::calculateAlpha(size_t id)
 {
 	// See aidTask_pic_results.7z archive to see different routes for different simulation angle calculation
 
-	//See declaration of getAlpha functions for details
+	// See declaration of getAlpha functions for details
 	return atan(static_cast<double>(id) / 1.0);
 
 }

@@ -7,22 +7,21 @@
 
 namespace visualizer {
 
-// Pixel values
+/// Pixel values
 enum ImagePixelValues
 {
-    IPV_PATH = 0,               // Results in red in the BMP
-    IPV_WATER = 1,              // Results in the water color in the BMP
- 	IPV_QUICK_PATH = 2,               // Results are green in the BMP
-	IPV_NORMAL_PATH = 3,               // Results are green in the BMP
-	IPV_SLOW_PATH = 4,               // Results is yellow in the BMP
-	IPV_TOO_SLOW_PATH = 5,               // Results in red in the BMP
-	IPV_ELEVATION_BEGIN = 6,     // 6-255
+    IPV_PATH = 0,               ///< Results are red in the BMP
+    IPV_WATER = 1,              ///< Results are the water color in the BMP
+ 	IPV_QUICK_PATH = 2,         ///< Results are green in the BMP
+	IPV_NORMAL_PATH = 3,        ///< Results are green in the BMP
+	IPV_SLOW_PATH = 4,          ///< Results are yellow in the BMP
+	IPV_TOO_SLOW_PATH = 5,      ///< Results are red in the BMP
+	IPV_ELEVATION_BEGIN = 6,    ///< 6-255
 
 };
 
 
-/**
- * A method to write BMP file contents to a specified ostream.
+/** A method to write BMP file contents to a specified ostream.
  *
  * @param out The ostream to use for output. Could be directed into anything
  * @param elevationData Pointer to grid of elevation values. There must be width * height such

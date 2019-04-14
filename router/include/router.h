@@ -12,9 +12,7 @@
 #include "model.h"
 #include "maps_viewer.h"
 
-/*!
-This class implements logic of optimal path build.\
-
+/** This class implements logic of optimal path build
 The idea is simple
 1)	calculate path from the Current point to a new destination
 2)  Save results in path history
@@ -81,8 +79,8 @@ struct RouteBuilder
 
 		const auto& curLocation = m_baseRoutePoints.back();
 		m_timeToArrive.put(curLocation, 0);
-		// Key of the queue - is a priority. It measure minimum estimated time of arrival through this point to the finish
-		// Value of the queue is a pair with a Point and time to arrive from start to this point
+		// The Key of the queue - is a priority. It measure minimum estimated time of arrival through this point to the finish
+		// The Value of the queue is a pair with a Point and time to arrive from start to this point
 		QueueT queue; 
 		TimeT timeToPoint = 0.0;
 		auto minTimeToArrive = m_simEngine.getMinTimeToArrive(curLocation, finishPnt);
